@@ -1,0 +1,27 @@
+[build-system]
+requires = ["sip >=5.3, <7", "PyQt-builder >=1.9, <2"]
+build-backend = "sipbuild.api"
+
+[project]
+name = "RhiWindow"
+version = "0.1.0"
+
+[tool.sip]
+project-factory = "pyqtbuild:PyQtProject"
+
+[tool.sip.metadata]
+name = "RhiWindow"
+requires-dist = "PyQt6 (>=5.15.0, <6.11.0)"
+
+[tool.sip.project]
+tag-prefix = "RhiWindow"
+sip-include-dirs = [
+    "C:/Users/boomy/AppData/Local/Programs/Python/Python310/Lib/site-packages/PyQt6/bindings"
+]
+
+[tool.sip.bindings.RhiWindow]
+qmake-QT = ["core", "gui", "widgets"]
+headers = ["rhiwindow.h"]
+include-dirs = ["../dist/include"]
+libraries = ["LibQrhiExample"]
+library-dirs = ["../dist/lib"]
