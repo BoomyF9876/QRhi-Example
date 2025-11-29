@@ -18,10 +18,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core GuiPrivate)
 
 qt_standard_project_setup()
 
-qt_add_executable(LibQrhiExample
-    main.cpp
-    rhiwindow.cpp rhiwindow.h
-)
+add_library(LibQrhiExample rhiwindow.cpp rhiwindow.h)
 
 set_target_properties(LibQrhiExample PROPERTIES
     WIN32_EXECUTABLE TRUE
@@ -56,15 +53,10 @@ qt_add_resources(LibQrhiExample "rhiwindow"
         "shaders/prebuilt/quad.frag.qsb"
 )
 
-install(TARGETS LibQrhiExample
-    BUNDLE  DESTINATION .
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
+install(
+  TARGETS ${PROJECT_NAME}
+  RUNTIME DESTINATION "${CMAKE_INSTALL_DIR}/bin"
+  LIBRARY DESTINATION "${CMAKE_INSTALL_DIR}/lib"
+  ARCHIVE DESTINATION "${CMAKE_INSTALL_DIR}/lib")
 
-qt_generate_deploy_app_script(
-    TARGET LibQrhiExample
-    OUTPUT_SCRIPT deploy_script
-    NO_UNSUPPORTED_PLATFORM_ERROR
-)
-install(SCRIPT ${deploy_script})
+install(FILES rhiwindow.h DESTINATION "${CMAKE_INSTALL_DIR}/include")

@@ -4,3 +4,4 @@ project(RhiWindow LANGUAGES CXX)
 
 add_subdirectory(LibQrhiExample)
 add_subdirectory(QrhiWrapper)
+add_subdirectory(TestRhiWindow)
