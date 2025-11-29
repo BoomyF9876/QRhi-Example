@@ -211,20 +211,7 @@ void HelloWindow::ensureFullscreenTexture(const QSize &pixelSize, QRhiResourceUp
 //! [ensure-texture]
     QPainter painter(&image);
     painter.fillRect(QRectF(QPointF(0, 0), size()), QColor::fromRgbF(0.4f, 0.7f, 0.0f, 1.0f));
-    // painter.setPen(Qt::transparent);
-    // painter.setBrush({ QGradient(QGradient::DeepBlue) });
-    // painter.drawRoundedRect(QRectF(QPointF(20, 20), size() - QSize(40, 40)), 16, 16);
-    // painter.setPen(Qt::black);
-    // QFont font;
-    // font.setPixelSize(0.05 * qMin(width(), height()));
-    // painter.setFont(font);
-    // painter.drawText(QRectF(QPointF(60, 60), size() - QSize(120, 120)), 0,
-    //                  QLatin1String("Rendering with QRhi to a resizable QWindow.\nThe 3D API is %1.\nUse the command-line options to choose a different API.")
-    //                  .arg(graphicsApiName()));
     painter.end();
-
-    // if (m_rhi->isYUpInNDC())
-    //     image.flip();
 
 //! [ensure-texture-2]
     u->uploadTexture(m_texture.get(), image);
@@ -316,22 +303,6 @@ void HelloWindow::customRender()
         m_initialUpdates = nullptr;
     }
 //! [render-1]
-
-//! [render-rotation]
-    // m_rotation += 1.0f;
-    // QMatrix4x4 modelViewProjection = m_viewProjection;
-    // modelViewProjection.rotate(m_rotation, 0, 1, 0);
-    // resourceUpdates->updateDynamicBuffer(m_ubuf.get(), 0, 64, modelViewProjection.constData());
-//! [render-rotation]
-
-//! [render-opacity]
-    // m_opacity += m_opacityDir * 0.005f;
-    // if (m_opacity < 0.0f || m_opacity > 1.0f) {
-    //     m_opacityDir *= -1;
-    //     m_opacity = qBound(0.0f, m_opacity, 1.0f);
-    // }
-    // resourceUpdates->updateDynamicBuffer(m_ubuf.get(), 64, 4, &m_opacity);
-//! [render-opacity]
 
 //! [render-cb]
     QRhiCommandBuffer *cb = m_sc->currentFrameCommandBuffer();

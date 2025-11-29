@@ -4,11 +4,21 @@
 cmake_minimum_required(VERSION 3.16)
 project(LibQrhiExample LANGUAGES CXX)
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_INSTALL_DIR "${CMAKE_SOURCE_DIR}/dist")
+
+set(BUILD_SHARED_LIBS OFF)
+
 find_package(Qt6 REQUIRED COMPONENTS Core GuiPrivate)
 
 qt_standard_project_setup()
 
-qt_add_executable(rhiwindow
+qt_add_executable(LibQrhiExample
     main.cpp
     rhiwindow.cpp rhiwindow.h
 )
@@ -18,7 +28,7 @@ set_target_properties(LibQrhiExample PROPERTIES
     MACOSX_BUNDLE TRUE
 )
 
-target_link_libraries(LibQrhiExample PRIVATE
+target_link_libraries(LibQrhiExample PUBLIC
     Qt6::Core
     Qt6::Gui
     Qt6::GuiPrivate
