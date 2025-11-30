@@ -14,7 +14,7 @@ set(CMAKE_INSTALL_DIR "${CMAKE_SOURCE_DIR}/dist")
 
 set(BUILD_SHARED_LIBS OFF)
 
-find_package(Qt6 REQUIRED COMPONENTS Core GuiPrivate)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui)
 
 qt_standard_project_setup()
 
