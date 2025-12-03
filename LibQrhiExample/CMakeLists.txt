@@ -25,7 +25,7 @@ set_target_properties(LibQrhiExample PROPERTIES
     MACOSX_BUNDLE TRUE
 )
 
-target_link_libraries(LibQrhiExample PUBLIC
+target_link_libraries(LibQrhiExample PRIVATE
     Qt6::Core
     Qt6::Gui
     Qt6::GuiPrivate
