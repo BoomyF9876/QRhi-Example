@@ -10,11 +10,13 @@ sys.path.append(
 )
 
 from PyQt6.QtGui import QGuiApplication, QSurfaceFormat
-from PyQt6.QtCore import QCommandLineParser, QCommandLineOption
+from PyQt6.QtCore import QCommandLineParser, QCommandLineOption, QLoggingCategory
 from RhiWindow import RhiWindow
 
 if __name__ == "__main__":
     cgitb.enable(format="text")
+
+    QLoggingCategory.setFilterRules("qt.vulkan=true")
 
     app = QGuiApplication(sys.argv)
 

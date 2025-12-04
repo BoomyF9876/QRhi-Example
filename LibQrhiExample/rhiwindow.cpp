@@ -17,6 +17,7 @@ RhiWindow::RhiWindow()
     inst.setLayers({ "VK_LAYER_KHRONOS_validation" });
     // Play nice with QRhi.
     inst.setExtensions(QRhiVulkanInitParams::preferredInstanceExtensions());
+    inst.setApiVersion(QVersionNumber(1,1));
     if (!inst.create()) {
         qFatal("Failed to create Vulkan instance");
     }
@@ -87,8 +88,9 @@ bool RhiWindow::event(QEvent *e)
 void RhiWindow::init()
 {
     QRhiVulkanInitParams params;
-    params.inst = vulkanInstance();
+    params.inst = &inst;
     params.window = this;
+    params.deviceExtensions = {QByteArray("VK_KHR_multiview"), QByteArray("VK_KHR_maintenance2")};
     m_rhi.reset(QRhi::create(QRhi::Vulkan, &params));
 
     if (!m_rhi)
@@ -264,8 +266,8 @@ void RhiWindow::customInit()
     premulAlphaBlend.enable = true;
     m_colorPipeline->setTargetBlends({ premulAlphaBlend });
     m_colorPipeline->setShaderStages({
-        { QRhiShaderStage::Vertex, getShader(QLatin1String(":/color.vert.qsb")) },
-        { QRhiShaderStage::Fragment, getShader(QLatin1String(":/color.frag.qsb")) }
+        { QRhiShaderStage::Vertex, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/color.vert.qsb")) },
+        { QRhiShaderStage::Fragment, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/color.frag.qsb")) }
     });
     QRhiVertexInputLayout inputLayout;
     inputLayout.setBindings({
@@ -290,8 +292,8 @@ void RhiWindow::customInit()
 
     m_fullscreenQuadPipeline.reset(m_rhi->newGraphicsPipeline());
     m_fullscreenQuadPipeline->setShaderStages({
-        { QRhiShaderStage::Vertex, getShader(QLatin1String(":/quad.vert.qsb")) },
-        { QRhiShaderStage::Fragment, getShader(QLatin1String(":/quad.frag.qsb")) }
+        { QRhiShaderStage::Vertex, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/quad.vert.qsb")) },
+        { QRhiShaderStage::Fragment, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/quad.frag.qsb")) }
     });
     m_fullscreenQuadPipeline->setVertexInputLayout({});
     m_fullscreenQuadPipeline->setShaderResourceBindings(m_fullscreenQuadSrb.get());

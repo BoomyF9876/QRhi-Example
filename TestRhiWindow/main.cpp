@@ -2,11 +2,14 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 #include <QGuiApplication>
+#include <QLoggingCategory>
 #include <QCommandLineParser>
 #include "rhiwindow.h"
 
 int main(int argc, char **argv)
 {
+    QLoggingCategory::setFilterRules(QStringLiteral("qt.vulkan=true"));
+
     QGuiApplication app(argc, argv);
 
     QCommandLineParser cmdLineParser;
