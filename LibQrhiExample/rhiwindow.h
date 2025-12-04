@@ -8,6 +8,8 @@
 #include <QOffscreenSurface>
 #include <rhi/qrhi.h>
 
+const std::string SHADER_PATH = "/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/";
+
 class RhiWindow : public QWindow
 {
 public:

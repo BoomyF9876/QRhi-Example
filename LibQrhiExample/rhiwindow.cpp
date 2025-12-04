@@ -266,8 +266,8 @@ void RhiWindow::customInit()
     premulAlphaBlend.enable = true;
     m_colorPipeline->setTargetBlends({ premulAlphaBlend });
     m_colorPipeline->setShaderStages({
-        { QRhiShaderStage::Vertex, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/color.vert.qsb")) },
-        { QRhiShaderStage::Fragment, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/color.frag.qsb")) }
+        { QRhiShaderStage::Vertex, getShader(QLatin1String(SHADER_PATH + "color.vert.qsb")) },
+        { QRhiShaderStage::Fragment, getShader(QLatin1String(SHADER_PATH + "color.frag.qsb")) }
     });
     QRhiVertexInputLayout inputLayout;
     inputLayout.setBindings({
@@ -292,8 +292,8 @@ void RhiWindow::customInit()
 
     m_fullscreenQuadPipeline.reset(m_rhi->newGraphicsPipeline());
     m_fullscreenQuadPipeline->setShaderStages({
-        { QRhiShaderStage::Vertex, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/quad.vert.qsb")) },
-        { QRhiShaderStage::Fragment, getShader(QLatin1String("/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/quad.frag.qsb")) }
+        { QRhiShaderStage::Vertex, getShader(QLatin1String(SHADER_PATH + "quad.vert.qsb")) },
+        { QRhiShaderStage::Fragment, getShader(QLatin1String(SHADER_PATH + "quad.frag.qsb")) }
     });
     m_fullscreenQuadPipeline->setVertexInputLayout({});
     m_fullscreenQuadPipeline->setShaderResourceBindings(m_fullscreenQuadSrb.get());
