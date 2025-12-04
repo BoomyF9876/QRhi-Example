@@ -9,12 +9,6 @@ int main(int argc, char **argv)
 {
     QGuiApplication app(argc, argv);
 
-    QRhi::Implementation graphicsApi;
-
-    // Use platform-specific defaults when no command-line arguments given.
-
-    graphicsApi = QRhi::Vulkan;
-
     QCommandLineParser cmdLineParser;
     cmdLineParser.addHelpOption();
     QCommandLineOption vkOption({ "v", "vulkan" }, QLatin1String("Vulkan"));
@@ -35,20 +29,7 @@ int main(int argc, char **argv)
 
     QSurfaceFormat::setDefaultFormat(fmt);
 
-    // For Vulkan.
-    QVulkanInstance inst;
-    // Request validation, if available. This is completely optional
-    // and has a performance impact, and should be avoided in production use.
-    inst.setLayers({ "VK_LAYER_KHRONOS_validation" });
-    // Play nice with QRhi.
-    inst.setExtensions(QRhiVulkanInitParams::preferredInstanceExtensions());
-    if (!inst.create()) {
-        qWarning("Failed to create Vulkan instance, switching to OpenGL");
-        graphicsApi = QRhi::OpenGLES2;
-    }
-
-    HelloWindow window;
-    window.setVulkanInstance(&inst);
+    RhiWindow window;
     window.resize(1280, 720);
     window.setTitle(QCoreApplication::applicationName() + QLatin1String(" - ") + window.graphicsApiName());
     window.show();

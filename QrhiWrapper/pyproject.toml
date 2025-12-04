@@ -15,12 +15,14 @@ requires-dist = "PyQt6 (>=5.15.0, <6.11.0)"
 
 [tool.sip.project]
 tag-prefix = "RhiWindow"
+abi-version = "13.9"
 sip-include-dirs = [
-    "C:/Users/boomy/AppData/Local/Programs/Python/Python310/Lib/site-packages/PyQt6/bindings"
+    "C:/Users/boomy/AppData/Local/Programs/Python/Python310/Lib/site-packages/PyQt6/bindings",
+    "/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/qt6/lib/python3.10/site-packages/PyQt6/bindings"
 ]
 
 [tool.sip.bindings.RhiWindow]
-qmake-QT = ["core", "gui", "widgets"]
+qmake-QT = ["core", "gui", "widgets", "gui-private"]
 headers = ["rhiwindow.h"]
 include-dirs = ["../dist/include"]
 libraries = ["LibQrhiExample"]

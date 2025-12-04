@@ -11,6 +11,17 @@
 RhiWindow::RhiWindow()
 {
     setSurfaceType(VulkanSurface);
+
+    // Request validation, if available. This is completely optional
+    // and has a performance impact, and should be avoided in production use.
+    inst.setLayers({ "VK_LAYER_KHRONOS_validation" });
+    // Play nice with QRhi.
+    inst.setExtensions(QRhiVulkanInitParams::preferredInstanceExtensions());
+    if (!inst.create()) {
+        qFatal("Failed to create Vulkan instance");
+    }
+
+    setVulkanInstance(&inst);
 }
 //! [rhiwindow-ctor]
 
@@ -189,12 +200,8 @@ static QShader getShader(const QString &name)
 }
 //! [getshader]
 
-HelloWindow::HelloWindow()
-{
-}
-
 //! [ensure-texture]
-void HelloWindow::ensureFullscreenTexture(const QSize &pixelSize, QRhiResourceUpdateBatch *u)
+void RhiWindow::ensureFullscreenTexture(const QSize &pixelSize, QRhiResourceUpdateBatch *u)
 {
     if (m_texture && m_texture->pixelSize() == pixelSize)
         return;
@@ -219,7 +226,7 @@ void HelloWindow::ensureFullscreenTexture(const QSize &pixelSize, QRhiResourceUp
 }
 
 //! [render-init-1]
-void HelloWindow::customInit()
+void RhiWindow::customInit()
 {
     m_initialUpdates = m_rhi->nextResourceUpdateBatch();
 
@@ -293,7 +300,7 @@ void HelloWindow::customInit()
 }
 
 //! [render-1]
-void HelloWindow::customRender()
+void RhiWindow::customRender()
 {
     QRhiResourceUpdateBatch *resourceUpdates = m_rhi->nextResourceUpdateBatch();
 

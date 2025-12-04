@@ -1,4 +1,7 @@
 .vscode/*
 .qtcreator/*
 build/*
-dist/*
+dist/include/*
+dist/lib/*
+QrhiWrapper/build/*
+qt6/*
