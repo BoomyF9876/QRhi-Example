@@ -8,12 +8,10 @@
 #include <QOffscreenSurface>
 #include <rhi/qrhi.h>
 
-const std::string SHADER_PATH = "/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/";
-
 class RhiWindow : public QWindow
 {
 public:
-    RhiWindow();
+    RhiWindow(const QString& _shader);
     QString graphicsApiName() const;
     void releaseSwapChain();
 
@@ -30,15 +28,16 @@ private:
     void resizeSwapChain();
     void ensureFullscreenTexture(const QSize &pixelSize, QRhiResourceUpdateBatch *u);
 
+    const QString shader_path;
     bool m_initialized = false;
     bool m_notExposed = false;
     bool m_newlyExposed = false;
     bool m_hasSwapChain = false;
     
     //! [swapchain-data]
-        std::unique_ptr<QRhiSwapChain> m_sc;
-        std::unique_ptr<QRhiRenderBuffer> m_ds;
-        std::unique_ptr<QRhiRenderPassDescriptor> m_rp;
+    std::unique_ptr<QRhiSwapChain> m_sc;
+    std::unique_ptr<QRhiRenderBuffer> m_ds;
+    std::unique_ptr<QRhiRenderPassDescriptor> m_rp;
     //! [swapchain-data]
     std::unique_ptr<QRhi> m_rhi;
     std::unique_ptr<QRhiBuffer> m_vbuf;

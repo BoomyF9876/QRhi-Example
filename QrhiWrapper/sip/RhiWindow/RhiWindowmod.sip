@@ -11,7 +11,7 @@ class RhiWindow : public QWindow
     #include "rhiwindow.h"
 %End
 public:
-    RhiWindow();
+    RhiWindow(const QString& _shader);
 
     void handle();
     void releaseSwapChain();

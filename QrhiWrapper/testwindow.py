@@ -8,6 +8,7 @@ import cgitb
 sys.path.append(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "build/RhiWindow")
 )
+path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../LibQrhiExample/shaders/prebuilt/")
 
 from PyQt6.QtGui import QGuiApplication, QSurfaceFormat
 from PyQt6.QtCore import QCommandLineParser, QCommandLineOption, QLoggingCategory
@@ -32,7 +33,7 @@ if __name__ == "__main__":
 
     QSurfaceFormat.setDefaultFormat(fmt)
 
-    w = RhiWindow()
+    w = RhiWindow(path)
     w.resize(1280, 720)
     w.setTitle("Test QRhi")
     w.show()

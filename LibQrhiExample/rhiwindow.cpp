@@ -8,7 +8,8 @@
 #include <rhi/qshader.h>
 
 //! [rhiwindow-ctor]
-RhiWindow::RhiWindow()
+RhiWindow::RhiWindow(const QString& _shader):
+    shader_path(_shader)
 {
     setSurfaceType(VulkanSurface);
 
@@ -266,8 +267,8 @@ void RhiWindow::customInit()
     premulAlphaBlend.enable = true;
     m_colorPipeline->setTargetBlends({ premulAlphaBlend });
     m_colorPipeline->setShaderStages({
-        { QRhiShaderStage::Vertex, getShader(QLatin1String(SHADER_PATH + "color.vert.qsb")) },
-        { QRhiShaderStage::Fragment, getShader(QLatin1String(SHADER_PATH + "color.frag.qsb")) }
+        { QRhiShaderStage::Vertex, getShader(QLatin1String(shader_path.toStdString() + "color.vert.qsb")) },
+        { QRhiShaderStage::Fragment, getShader(QLatin1String(shader_path.toStdString() + "color.frag.qsb")) }
     });
     QRhiVertexInputLayout inputLayout;
     inputLayout.setBindings({
@@ -292,8 +293,8 @@ void RhiWindow::customInit()
 
     m_fullscreenQuadPipeline.reset(m_rhi->newGraphicsPipeline());
     m_fullscreenQuadPipeline->setShaderStages({
-        { QRhiShaderStage::Vertex, getShader(QLatin1String(SHADER_PATH + "quad.vert.qsb")) },
-        { QRhiShaderStage::Fragment, getShader(QLatin1String(SHADER_PATH + "quad.frag.qsb")) }
+        { QRhiShaderStage::Vertex, getShader(QLatin1String(shader_path.toStdString() + "quad.vert.qsb")) },
+        { QRhiShaderStage::Fragment, getShader(QLatin1String(shader_path.toStdString() + "quad.frag.qsb")) }
     });
     m_fullscreenQuadPipeline->setVertexInputLayout({});
     m_fullscreenQuadPipeline->setShaderResourceBindings(m_fullscreenQuadSrb.get());

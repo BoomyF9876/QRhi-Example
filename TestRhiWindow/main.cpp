@@ -6,6 +6,8 @@
 #include <QCommandLineParser>
 #include "rhiwindow.h"
 
+const QString SHADER_PATH = "/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/";
+
 int main(int argc, char **argv)
 {
     QLoggingCategory::setFilterRules(QStringLiteral("qt.vulkan=true"));
@@ -32,7 +34,7 @@ int main(int argc, char **argv)
 
     QSurfaceFormat::setDefaultFormat(fmt);
 
-    RhiWindow window;
+    RhiWindow window(SHADER_PATH);
     window.resize(1280, 720);
     window.setTitle(QCoreApplication::applicationName() + QLatin1String(" - ") + window.graphicsApiName());
     window.show();
