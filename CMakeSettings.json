@@ -1,0 +1,67 @@
+﻿{
+  "configurations": [
+    {
+      "name": "x64-Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "buildRoot": "${projectDir}\\build\\${name}",
+      "installRoot": "${projectDir}\\install\\${name}",
+      "cmakeCommandArgs": "install",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "Qt6_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6",
+          "type": "PATH"
+        },
+        {
+          "name": "Qt6Core_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6Core",
+          "type": "PATH"
+        },
+        {
+          "name": "Qt6CoreTools_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6CoreTools",
+          "type": "PATH"
+        },
+        {
+          "name": "Qt6EntryPointPrivate_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6EntryPointPrivate",
+          "type": "PATH"
+        },
+        {
+          "name": "Qt6Gui_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6Gui",
+          "type": "PATH"
+        },
+        {
+          "name": "Qt6GuiTools_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6GuiTools",
+          "type": "PATH"
+        },
+        {
+          "name": "Qt6ZlibPrivate_DIR",
+          "value": "C:/Qt/6.8.3/msvc2022_64/lib/cmake/Qt6ZlibPrivate",
+          "type": "PATH"
+        },
+        {
+          "name": "WINDEPLOYQT_EXECUTABLE",
+          "value": "C:/Qt/6.8.3/msvc2022_64/bin/windeployqt.exe",
+          "type": "FILEPATH"
+        },
+        {
+          "name": "CMAKE_BUILD_TYPE",
+          "value": "Release",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_INSTALL_PREFIX",
+          "value": "C:/Users/boomy/Desktop/projects/QRhi-Example/out/install/x64-Release",
+          "type": "PATH"
+        }
+      ]
+    }
+  ]
+}

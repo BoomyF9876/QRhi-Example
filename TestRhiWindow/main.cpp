@@ -6,7 +6,7 @@
 #include <QCommandLineParser>
 #include "rhiwindow.h"
 
-const QString SHADER_PATH = "/home/ubuntu/projects/RhiExample_6.8.3/QRhi-Example/LibQrhiExample/shaders/prebuilt/";
+const QString SHADER_PATH = "C:\\Users\\boomy\\Desktop\\projects\\QRhi-Example\\LibQrhiExample\\shaders\\prebuilt\\";
 
 int main(int argc, char **argv)
 {
